@@ -9,6 +9,10 @@ import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('punkt_tab') 
 import plotly.express as px
 import plotly.graph_objects as go
 from nltk.tokenize import word_tokenize
