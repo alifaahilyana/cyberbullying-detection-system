@@ -678,17 +678,22 @@ def render_detailed_results(results: pd.DataFrame):
         )
         df_show = df_show[mask]
 
-    def colour_bully(val):
-        return "color: #f85149; font-weight:600;" if val == "Yes" else "color: #3fb950;"
+    def colour_bully(col):
+        return [
+            "color: #f85149; font-weight:600;" if val == "Yes" else "color: #3fb950;"
+            for val in col
+        ]
 
-    def colour_emotion(val):
-        c = EMOTION_COLOURS.get(val, "#8b949e")
-        return f"color: {c};" if val != "N/A" else "color: #8b949e;"
+    def colour_emotion(col):
+        return [
+            f"color: {EMOTION_COLOURS.get(val, '#8b949e')};" if val != "N/A" else "color: #8b949e;"
+            for val in col
+        ]
 
     styled = (
         df_show.style
-        .applymap(colour_bully,   subset=["Bully"])
-        .applymap(colour_emotion, subset=["Emotion"])
+        .apply(colour_bully, subset=["Bully"], axis=0)
+        .apply(colour_emotion, subset=["Emotion"], axis=0)
     )
 
     st.dataframe(styled, use_container_width=True, hide_index=True)
