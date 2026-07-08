@@ -641,14 +641,16 @@ def render_risk_users(results: pd.DataFrame):
         return
 
     # Highlight rows with high bully rate
-    def highlight_rate(val):
-        if val >= 60:
-            return "color: #f85149; font-weight: 600;"
-        elif val >= 30:
-            return "color: #d29922; font-weight: 600;"
-        return "color: #3fb950; font-weight: 600;"
+    def highlight_rate(col):
+        return [
+            "color: #f85149; font-weight: 600;" if val >= 60 else
+            "color: #d29922; font-weight: 600;" if val >= 30 else
+            "color: #3fb950; font-weight: 600;"
+            for val in col
+        ]
 
-    styled = grouped.style.applymap(highlight_rate, subset=["Bully Rate (%)"])
+    styled = grouped.style.apply(highlight_rate, subset=["Bully Rate (%)"], axis=0)
+
     st.dataframe(
         styled,
         use_container_width=True,
@@ -663,6 +665,7 @@ def render_risk_users(results: pd.DataFrame):
         'This table is a decision-support tool — it does <strong>not</strong> label any user as a cyberbully.</div>',
         unsafe_allow_html=True,
     )
+
 
 
 def render_detailed_results(results: pd.DataFrame):
