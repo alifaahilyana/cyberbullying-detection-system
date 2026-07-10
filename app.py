@@ -600,7 +600,7 @@ def render_emotion_section(results: pd.DataFrame):
         <div class="chart-box" style="height:100%; display:flex; flex-direction:column;
              justify-content:center; align-items:center; text-align:center; gap:0.75rem;">
             <div style="font-size:0.75rem;font-weight:600;letter-spacing:1px;
-                 text-transform:uppercase;color:#8b949e;">Most Common Emotion</div>
+                 text-transform:uppercase;color:#8b949e;">Dominant Emotion</div>
             <div style="font-family:'Space Grotesk',sans-serif;font-size:2.4rem;
                  font-weight:700;color:{colour};">{most_common}</div>
             <div style="font-size:0.85rem;color:#8b949e;">
