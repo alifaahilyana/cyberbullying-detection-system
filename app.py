@@ -495,7 +495,7 @@ def build_excel_report(results: pd.DataFrame) -> bytes:
     styled_row(ws2, 4,  "Bullying Comments",          bully_comments,    RED)
     styled_row(ws2, 5,  "Non-Bullying Comments",      nonbully_comments, GREEN)
     styled_row(ws2, 6,  "Cyberbullying Rate (%)",     f"{bully_rate:.1f}%", YELLOW)
-    styled_row(ws2, 7,  "Most Common Emotion",        most_common_emotion, TEAL)
+    styled_row(ws2, 7,  "Dominant Emotion",        most_common_emotion, TEAL)
 
     # ── Serialise ────────────────────────────────────────────────────────────
     buf = io.BytesIO()
