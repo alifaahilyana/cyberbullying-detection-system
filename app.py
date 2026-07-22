@@ -24,7 +24,7 @@ from openpyxl.utils import get_column_letter
 # PAGE CONFIG
 # ──────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="CyberGuard — Cyberbullying Analysis",
+    page_title="Cyberbullying Detection and Emotion Analysis",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="collapsed",
